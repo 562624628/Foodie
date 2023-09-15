@@ -4,6 +4,7 @@ import com.imooc.controller.IndexApiService;
 import com.imooc.enums.YesNoEnum;
 import com.imooc.pojo.Carousel;
 import com.imooc.pojo.vo.CategoryVO;
+import com.imooc.pojo.vo.NewItemsVO;
 import com.imooc.service.CarouseService;
 import com.imooc.service.CategoryService;
 import com.imooc.utils.ResultBase;
@@ -38,5 +39,14 @@ public class IndexApiServiceImpl implements IndexApiService {
         }
         List<CategoryVO> subCatList = categoryService.getSubCatList(rootCatId);
         return ResultBase.ok(subCatList);
+    }
+
+    @Override
+    public ResultBase sixNewItems(Integer rootCatId) {
+        if(rootCatId == null){
+            return ResultBase.errorMsg("分类不存在");
+        }
+        List<NewItemsVO> sixNewItemsLazy = categoryService.getSixNewItemsLazy(rootCatId);
+        return ResultBase.ok(sixNewItemsLazy);
     }
 }

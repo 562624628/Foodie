@@ -3,8 +3,8 @@ package com.imooc.pojo.vo;
 import lombok.Data;
 
 @Data
-public class SubCategoryVO {
-    private Integer itemId;
+public class SimpleItemVO {
+    private String itemId;
     private String itemName;
     private String itemUrl;
 }

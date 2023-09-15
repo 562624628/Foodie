@@ -18,4 +18,7 @@ public interface IndexApiService {
 
     @GetMapping("/subCat/{rootCatId}")
     ResultBase subCat(@PathVariable Integer rootCatId);
+
+    @GetMapping("/sixNewItems/{rootCatId}")
+    ResultBase sixNewItems(@PathVariable Integer rootCatId);
 }
