@@ -1,6 +1,6 @@
-package com.imooc.org.n3r.idworker;
+package org.n3r.idworker;
 
-import com.imooc.org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
+import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
 import org.n3r.idworker.utils.Utils;
 import org.springframework.stereotype.Component;
 

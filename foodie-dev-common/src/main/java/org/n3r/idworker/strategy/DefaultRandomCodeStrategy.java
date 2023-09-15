@@ -1,7 +1,7 @@
-package com.imooc.org.n3r.idworker.strategy;
+package org.n3r.idworker.strategy;
 
 import org.n3r.idworker.Id;
-import com.imooc.org.n3r.idworker.RandomCodeStrategy;
+import org.n3r.idworker.RandomCodeStrategy;
 import org.n3r.idworker.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

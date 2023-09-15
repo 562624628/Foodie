@@ -1,10 +1,6 @@
-package com.imooc.org.n3r.idworker.strategy;
+package org.n3r.idworker.strategy;
 
-import com.imooc.org.n3r.idworker.WorkerIdStrategy;
-import com.imooc.org.n3r.idworker.utils.HttpReq;
-import com.imooc.org.n3r.idworker.utils.Ip;
-import com.imooc.org.n3r.idworker.utils.Props;
-import com.imooc.org.n3r.idworker.utils.Utils;
+import org.n3r.idworker.WorkerIdStrategy;
 import org.n3r.idworker.utils.HttpReq;
 import org.n3r.idworker.utils.Ip;
 import org.n3r.idworker.utils.Props;

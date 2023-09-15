@@ -1,2 +1,4 @@
-package com.imooc.service;public class StuService {
+package com.imooc.service;
+
+public class StuService {
 }

@@ -1,2 +1,5 @@
-/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/controller/HelloController.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/Application.java
+/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/config/Swagger2.java
+/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/config/CorsConfig.java
+/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/controller/PassPortApiService.java
+/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/java/com/imooc/controller/impl/PassportApiServiceImpl.java

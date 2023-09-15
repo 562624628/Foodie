@@ -1,5 +1,8 @@
 package com.imooc.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.util.Date;
 import javax.persistence.*;
 

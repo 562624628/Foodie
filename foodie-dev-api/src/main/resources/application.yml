@@ -6,7 +6,6 @@ spring:
     username: root
     password: wxx1996411224
     hikari:
-      connection-timeout: 30000
       minimum-idle: 5
       maximum-pool-size: 20
       auto-commit: true
@@ -18,8 +17,10 @@ spring:
 mybatis:
   type-aliases-package: com.imooc.pojo
   mapper-locations: classpath:mapper/*.xml
+mapper:
+  mappers: com.imooc.my.mapper.MyMapper
 server:
-  port: 8088
+  port: 8087
   tomcat:
     uri-encoding: UTF-8
     max-http-post-size: 80KB

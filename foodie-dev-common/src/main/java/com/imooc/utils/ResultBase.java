@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author 慕课网 - 风间影月
  * @version V1.0
  */
-public class IMOOCJSONResult {
+public class ResultBase {
 
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -39,60 +39,60 @@ public class IMOOCJSONResult {
     @JsonIgnore
     private String ok;	// 不使用
 
-    public static IMOOCJSONResult build(Integer status, String msg, Object data) {
-        return new IMOOCJSONResult(status, msg, data);
+    public static ResultBase build(Integer status, String msg, Object data) {
+        return new ResultBase(status, msg, data);
     }
 
-    public static IMOOCJSONResult build(Integer status, String msg, Object data, String ok) {
-        return new IMOOCJSONResult(status, msg, data, ok);
+    public static ResultBase build(Integer status, String msg, Object data, String ok) {
+        return new ResultBase(status, msg, data, ok);
     }
     
-    public static IMOOCJSONResult ok(Object data) {
-        return new IMOOCJSONResult(data);
+    public static ResultBase ok(Object data) {
+        return new ResultBase(data);
     }
 
-    public static IMOOCJSONResult ok() {
-        return new IMOOCJSONResult(null);
+    public static ResultBase ok() {
+        return new ResultBase(null);
     }
     
-    public static IMOOCJSONResult errorMsg(String msg) {
-        return new IMOOCJSONResult(500, msg, null);
+    public static ResultBase errorMsg(String msg) {
+        return new ResultBase(500, msg, null);
     }
     
-    public static IMOOCJSONResult errorMap(Object data) {
-        return new IMOOCJSONResult(501, "error", data);
+    public static ResultBase errorMap(Object data) {
+        return new ResultBase(501, "error", data);
     }
     
-    public static IMOOCJSONResult errorTokenMsg(String msg) {
-        return new IMOOCJSONResult(502, msg, null);
+    public static ResultBase errorTokenMsg(String msg) {
+        return new ResultBase(502, msg, null);
     }
     
-    public static IMOOCJSONResult errorException(String msg) {
-        return new IMOOCJSONResult(555, msg, null);
+    public static ResultBase errorException(String msg) {
+        return new ResultBase(555, msg, null);
     }
     
-    public static IMOOCJSONResult errorUserQQ(String msg) {
-        return new IMOOCJSONResult(556, msg, null);
+    public static ResultBase errorUserQQ(String msg) {
+        return new ResultBase(556, msg, null);
     }
 
-    public IMOOCJSONResult() {
+    public ResultBase() {
 
     }
 
-    public IMOOCJSONResult(Integer status, String msg, Object data) {
+    public ResultBase(Integer status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
         this.data = data;
     }
     
-    public IMOOCJSONResult(Integer status, String msg, Object data, String ok) {
+    public ResultBase(Integer status, String msg, Object data, String ok) {
         this.status = status;
         this.msg = msg;
         this.data = data;
         this.ok = ok;
     }
 
-    public IMOOCJSONResult(Object data) {
+    public ResultBase(Object data) {
         this.status = 200;
         this.msg = "OK";
         this.data = data;
