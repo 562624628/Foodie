@@ -22,4 +22,7 @@ public interface PassPortApiService {
 
     @PostMapping("/login")
     ResultBase login(@RequestBody UsersBO usersBO, HttpServletRequest request, HttpServletResponse response);
+
+    @PostMapping("/logout")
+    ResultBase logout(@RequestBody String userId,HttpServletRequest request,HttpServletResponse response);
 }

@@ -78,4 +78,12 @@ public class PassportApiServiceImpl implements PassPortApiService {
         CookieUtils.setCookie(request,response,"user", JsonUtils.objectToJson(users),true);
         return ResultBase.ok(users);
     }
+
+    @Override
+    public ResultBase logout(String userId, HttpServletRequest request, HttpServletResponse response) {
+        log.info("logout:{}",userId);
+        //清除用户相关的cookie
+        CookieUtils.deleteCookie(request,response,"user");
+        return ResultBase.ok();
+    }
 }
