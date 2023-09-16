@@ -18,4 +18,8 @@ public interface ItemApiService {
 
     @GetMapping("/comments")
     ResultBase comments(@RequestParam String itemId,@RequestParam Integer level,@RequestParam Integer page,@RequestParam Integer pageSize);
+
+    @GetMapping("/search")
+    ResultBase comments(@RequestParam String keywords,@RequestParam String sort,@RequestParam Integer page,@RequestParam Integer pageSize);
+
 }

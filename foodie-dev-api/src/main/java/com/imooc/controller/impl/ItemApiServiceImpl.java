@@ -57,4 +57,19 @@ public class ItemApiServiceImpl extends BaseController implements ItemApiService
 
         return ResultBase.ok(pagedGridResult);
     }
+
+    @Override
+    public ResultBase comments(String keywords, String sort, Integer page, Integer pageSize) {
+        if(StringUtils.isBlank(keywords)){
+            return ResultBase.errorMsg(null);
+        }
+        if(page == null){
+            page = 1;
+        }
+        if(pageSize == null){
+            pageSize = PAGE_SIZE;
+        }
+        PagedGridResult pagedGridResult = itemService.searchItems(keywords, sort, page, pageSize);
+        return ResultBase.ok(pagedGridResult);
+    }
 }
