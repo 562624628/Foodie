@@ -16,7 +16,7 @@
             <id column="subId" property="subId"/>
             <result column="subName" property="subName"/>
             <result column="subType" property="subType"/>
-            <result column="father_id" property="subFatherId"/>
+            <result column="subFatherId" property="subFatherId"/>
         </collection>
     </resultMap>
 

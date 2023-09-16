@@ -22,6 +22,9 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 mapper:
   mappers: com.imooc.my.mapper.MyMapper
+pagehelper:
+  support-methods-arguments: true
+  helper-dialect: mysql
 server:
   port: 8087
   tomcat:

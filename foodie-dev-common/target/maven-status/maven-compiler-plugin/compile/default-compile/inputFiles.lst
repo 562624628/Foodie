@@ -24,6 +24,7 @@
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/utils/Serializes.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/strategy/FileLock.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/WorkerIdStrategy.java
+/Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/com/imooc/enums/CommentLevel.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/Id.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/utils/IPv4Utils.java
 /Users/a1234/IdeaProjects/Foodie/foodie-dev-common/src/main/java/org/n3r/idworker/RandomCodeStrategy.java
