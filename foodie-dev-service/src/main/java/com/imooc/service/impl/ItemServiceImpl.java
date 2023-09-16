@@ -3,19 +3,22 @@ package com.imooc.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.imooc.enums.CommentLevel;
+import com.imooc.enums.YesNoEnum;
 import com.imooc.mapper.*;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemCommentVO;
 import com.imooc.pojo.vo.SearchItemsVO;
+import com.imooc.pojo.vo.ShopcartVO;
 import com.imooc.service.ItemService;
 import com.imooc.utils.DesensitizationUtil;
 import com.imooc.utils.PagedGridResult;
-import com.sun.codemodel.internal.JConditional;
+import com.sun.org.apache.xpath.internal.objects.XNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -120,5 +123,48 @@ public class ItemServiceImpl implements ItemService {
             itemsComments.setCommentLevel(level);
         }
         return itemsCommentsMapper.select(itemsComments).size();
+    }
+
+    @Override
+    public PagedGridResult searchItems(Integer catId, String sort, Integer page, Integer pageSize) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("catId",catId);
+        map.put("sort",sort);
+        PageHelper.startPage(page,pageSize);
+        List<SearchItemsVO> itemsVOS = itemsMapperCustom.searchItemsByThirdCat(map);
+        return setterPagedGrid(itemsVOS,page);
+    }
+
+    @Override
+    public List<ShopcartVO> queryItemsBySpecIds(String specIds) {
+        String[] split = specIds.split(",");
+        List<String> specIdList = Arrays.asList(split);
+        List<ShopcartVO> shopcartVOS = itemsMapperCustom.queryItemsBySpecIds(specIdList);
+        return shopcartVOS;
+    }
+
+    @Override
+    public ItemsSpec queryitemSpecById(String specId) {
+        return itemsSpecMapper.selectByPrimaryKey(specId);
+    }
+
+    @Override
+    public String queryItemMainImgById(String itemId) {
+        ItemsImg itemsImg = new ItemsImg();
+        itemsImg.setItemId(itemId);
+        itemsImg.setIsMain(YesNoEnum.YES.getCode());
+        ItemsImg result = itemsImgMapper.selectOne(itemsImg);
+        return result == null?"":result.getUrl();
+    }
+
+    @Override
+    public void decreaseItemSpecStock(String specId, int count) {
+        //synchronized 不推荐使用 集群下无用 性能不行
+        //锁数据库 不推荐 导致数据库性能低下
+        //分布式锁 zookeeper redis
+        Integer result = itemsMapperCustom.decreaseItemSpecStock(specId, count);
+        if (result != 1){
+            throw new RuntimeException("订单创建失败，原因库存不足");
+        }
     }
 }

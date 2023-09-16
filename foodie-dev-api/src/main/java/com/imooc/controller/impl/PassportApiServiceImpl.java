@@ -58,7 +58,8 @@ public class PassportApiServiceImpl implements PassPortApiService {
         }
         Users users = usersService.createUsers(usersBO);
         CookieUtils.setCookie(request,response,"user", JsonUtils.objectToJson(users),true);
-
+        //TODO 生成用户token，存入redis会话
+        //todo 同步购物车数据
         return ResultBase.ok(users);
     }
 

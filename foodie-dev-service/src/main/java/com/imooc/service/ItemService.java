@@ -3,7 +3,9 @@ package com.imooc.service;
 import com.imooc.pojo.*;
 import com.imooc.pojo.vo.CommentLevelCountsVO;
 import com.imooc.pojo.vo.ItemCommentVO;
+import com.imooc.pojo.vo.ShopcartVO;
 import com.imooc.utils.PagedGridResult;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -25,4 +27,14 @@ public interface ItemService {
     PagedGridResult queryPagedComments(String itemId, Integer level, Integer page, Integer pageSize);
 
     PagedGridResult searchItems(String keywords, String sort, Integer page, Integer pageSize);
+
+    PagedGridResult searchItems(Integer catId, String sort, Integer page, Integer pageSize);
+
+    List<ShopcartVO> queryItemsBySpecIds(String specIds);
+
+    ItemsSpec queryitemSpecById(String specId);
+
+    String queryItemMainImgById(String itemId);
+
+    void decreaseItemSpecStock(String specId,int count);
 }

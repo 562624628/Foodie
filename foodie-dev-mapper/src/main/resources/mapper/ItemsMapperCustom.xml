@@ -41,4 +41,53 @@
         </choose>
 
     </select>
+    <select id="searchItemsByThirdCat" resultType="com.imooc.pojo.vo.SearchItemsVO" parameterType="map">
+        select i.item_name as itemName,
+        i.id as itemId,
+        i.sell_counts as sellCounts,
+        ii.url as imgUrl,
+        tempSpec.price_discount as price
+        from items i
+        left join items_img ii on i.id = ii.item_id
+        left join (select item_id, MIN(price_discount) as price_discount
+        from items_spec
+        group by item_id) tempSpec
+        on i.id = tempSpec.item_id
+        where ii.is_main = 1
+        and i.cat_id =  #{paramsMap.catId}
+        order by
+        <choose>
+            <when test="paramsMap.sort==&quot;c&quot;">i.sell_counts desc</when>
+            <when test="paramsMap.sort==&quot;p&quot;">tempSpec.price_discount asc</when>
+            <otherwise>i.item_name asc</otherwise>
+        </choose>
+
+    </select>
+
+    <select id="queryItemsBySpecIds" parameterType="List" resultType="com.imooc.pojo.vo.ShopcartVO">
+        select
+
+            t_items.id as itemId,
+            t_items.item_name as itemName,
+            t_item_img.url as itemImgUrl,
+            t_items_spec.id as specId,
+            t_items_spec.`name` as specName,
+            t_items_spec.price_discount as priceDiscount,
+            t_items_spec.price_normal priceNormal
+
+        from items_spec t_items_spec
+                 left join items t_items
+                           on t_items_spec.item_id = t_items.id
+                 left join items_img t_item_img on t_items.id = t_item_img.item_id
+        where t_item_img.is_main = 1
+          and t_items_spec.id in
+        <foreach collection="paramsList" index="index" item="specId" open="(" close=")" separator=",">
+            #{specId}
+        </foreach>
+    </select>
+    <update id="decreaseItemSpecStock">
+        update items_spec set stock = stock - #{pendingCounts}
+        where id = #{specId}
+        and stock &gt;= #{pendingCounts}
+    </update>
 </mapper>

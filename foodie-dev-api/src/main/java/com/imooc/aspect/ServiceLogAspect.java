@@ -30,17 +30,19 @@ public class ServiceLogAspect {
      *   第五处*（..）*代表类中的方法名 （..）表示方法中的任何参数
      *
      * */
-    @Around("execution(* com.imooc.service.impl..*.*(..))")
+    @Around("execution(* com.imooc.controller.impl..*.*(..))")
     @SneakyThrows
     public Object recordTimeLog(ProceedingJoinPoint joinPoint) {
-        log.info("=====开始执行{}.{}====", joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
         Long begin = System.currentTimeMillis();
         Object[] args = joinPoint.getArgs();
-        log.info("=====开始执行request:{}", arrayToString(args));
         Object proceed = joinPoint.proceed();
 
         Long end = System.currentTimeMillis();
         Long takeTime = end - begin;
+        log.info("=====start{}.{}", joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
+        log.info("=====request:{}", arrayToString(args));
+        log.info("=====response:{}", JsonUtils.objectToJson(proceed));
+
         if (takeTime > 3000) {
             log.error("=====执行结束 耗时:{}毫秒 ====", takeTime);
         }else {

@@ -21,5 +21,9 @@ public interface ItemApiService {
 
     @GetMapping("/search")
     ResultBase comments(@RequestParam String keywords,@RequestParam String sort,@RequestParam Integer page,@RequestParam Integer pageSize);
-
+    @GetMapping("/catItems")
+    ResultBase comments(@RequestParam Integer catId,@RequestParam String sort,@RequestParam Integer page,@RequestParam Integer pageSize);
+    //用户用户长时间未登陆网站，刷新购物车中的数据（主要是商品价格）
+    @GetMapping("/refresh")
+    ResultBase refresh(@RequestParam String itemSpecIds);
 }
