@@ -109,4 +109,22 @@ public class OrderServiceImpl implements OrderService {
         orderStatusMapper.insert(waitPayOrderStatus);
         return id;
     }
+
+    @Override
+    @Transactional
+    public void updateOrderStatus(String orderId, Integer orderStatus) {
+        OrderStatus payOrder = new OrderStatus();
+        payOrder.setOrderId(orderId);
+        OrderStatus orderStatus1 = orderStatusMapper.selectOne(payOrder);
+        orderStatus1.setOrderStatus(orderStatus);
+        orderStatus1.setPayTime(new Date());
+        orderStatusMapper.updateByPrimaryKey(orderStatus1);
+    }
+
+    @Override
+    public OrderStatus queryOfOrderStatusByOrderId(String orderId) {
+        OrderStatus t = new OrderStatus();
+        t.setOrderId(orderId);
+        return orderStatusMapper.selectOne(t);
+    }
 }

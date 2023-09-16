@@ -2,6 +2,7 @@ package com.imooc.controller.impl;
 
 import com.imooc.controller.IOrdersApiService;
 import com.imooc.enums.PayMethodEnum;
+import com.imooc.pojo.OrderStatus;
 import com.imooc.pojo.bo.SubmitOrderBO;
 import com.imooc.service.OrderService;
 import com.imooc.utils.CookieUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 @RestController
 @Slf4j
@@ -30,5 +32,13 @@ public class OrdersApiServiceImpl extends BaseController implements IOrdersApiSe
         //3。像支付中心发送订单
         String order = orderService.createOrder(submitOrderBO);
         return ResultBase.ok(order);
+    }
+
+    @Override
+    public ResultBase getPaidOrderInfo(String orderId) {
+        OrderStatus orderStatus = orderService.queryOfOrderStatusByOrderId(orderId);
+        HashMap<Object, Object> data = new HashMap<>();
+        data.put("orderStatus",orderStatus.getOrderStatus());
+        return ResultBase.ok(data);
     }
 }
