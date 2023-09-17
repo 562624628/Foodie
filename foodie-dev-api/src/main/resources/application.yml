@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: prd
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,7 +28,7 @@ pagehelper:
   support-methods-arguments: true
   helper-dialect: mysql
 server:
-  port: 8087
+#  port: 8088
   tomcat:
     uri-encoding: UTF-8
     max-http-post-size: 80KB
