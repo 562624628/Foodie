@@ -1,6 +1,7 @@
-package com.imooc.pojo;
+package com.imooc.pojo.convert;
 
 
+import com.imooc.pojo.UserAddress;
 import com.imooc.pojo.bo.UserAddressBO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

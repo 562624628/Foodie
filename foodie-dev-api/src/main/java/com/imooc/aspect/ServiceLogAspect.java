@@ -39,7 +39,7 @@ public class ServiceLogAspect {
 
         Long end = System.currentTimeMillis();
         Long takeTime = end - begin;
-        log.info("=====start{}.{}", joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
+        log.info("=====interface{}.{}", joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
         log.info("=====request:{}", arrayToString(args));
         log.info("=====response:{}", JsonUtils.objectToJson(proceed));
 

@@ -70,6 +70,7 @@ public class PassportApiServiceImpl implements PassPortApiService {
             return ResultBase.errorMsg("用户名和密码不能为空");
         }
         Users users = usersService.queryUserForLogin(usersBO.getUsername(), usersBO.getPassword());
+        users.setPassword(null);
         if(null == users){
             return ResultBase.errorMsg("用户名或者密码错误");
         }

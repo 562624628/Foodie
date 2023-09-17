@@ -2,7 +2,7 @@ package com.imooc.service.impl;
 
 import com.imooc.enums.YesNoEnum;
 import com.imooc.mapper.UserAddressMapper;
-import com.imooc.pojo.AddressConvert;
+import com.imooc.pojo.convert.AddressConvert;
 import com.imooc.pojo.UserAddress;
 import com.imooc.pojo.bo.UserAddressBO;
 import com.imooc.service.UserAddressService;
