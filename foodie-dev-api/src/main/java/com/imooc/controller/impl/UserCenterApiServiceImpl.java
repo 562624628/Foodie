@@ -5,13 +5,11 @@ import com.imooc.pojo.Users;
 import com.imooc.pojo.bo.CenterUsersBO;
 import com.imooc.resource.FileUpload;
 import com.imooc.service.MyOrdersService;
-import com.imooc.service.OrderService;
 import com.imooc.service.UsersCenterService;
 import com.imooc.utils.CookieUtils;
 import com.imooc.utils.JsonUtils;
 import com.imooc.utils.PagedGridResult;
 import com.imooc.utils.ResultBase;
-import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +23,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
-import java.util.UUID;
 
 @RestController
 public class UserCenterApiServiceImpl extends BaseController implements IUserCenterApiService {

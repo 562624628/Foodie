@@ -17,6 +17,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-        .addResourceLocations("file:/Users/a1234/IdeaProjects/Foodie/foodie-dev-api/src/main/resources/Img/");
+        .addResourceLocations("/workspaces/images/foodie/faces");
     }
 }
